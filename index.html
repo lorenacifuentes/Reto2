@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularios</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type= "text/javascript" src="js/funciones.js"></script>
+</head>
+<body>
+    <!--Este es el codigo para crear el titulo-->
+    <span style="color:cornflowerblue"><center><h2>HOTELES</h2></center></span>
+    <!--Formulario Habitación-->
+    <fieldset style="width: 15%">
+        <legend>Creación de Habitaciones</legend>
+    <table>
+    <tbody>
+        <!--Nombre de la celda e input para ingresar el ID para la tabla ROOM-->
+        <tr><td><span style="color:blueviolet"><center><b>ID</b></center></span></td>
+            <td><input type="number" id="id"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+        <!--Nombre de la celda e input para ingresar el ROOM-->
+        <tr><td><span style="color:blueviolet"><center><b>ROOM</b></center></span></td>
+            <td><input type="text" room="room"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+        <!--Nombre de la celda e input para ingresar STARS-->
+        
+        <tr><td><span style="color:blueviolet"><center><b>STARS</b></center></span></td>
+            <td><input type="number" stars="stars"></td>
+            <div id = "resultado"></div>
+        </tr>
+        <!--Nombre de la celda e input para ingresar AGE-->
+        <tr><td><span style="color:blueviolet"><center><b>CATEGORY_ID</b></center></span></td>
+            <td><input type="number" category_id="category_id"></td>
+            <div id = "resultado"></div> 
+        </tr>
+        <!--Nombre de la celda e input para ingresar DESCRIPTION-->
+        <tr><td><span style="color:blueviolet"><b>DESCRIPTION</b></span></td>
+            <td><center><input type="text" description="description"></center></td>
+            <div id = "resultado">
+            </div> 
+        </tr>
+        <!--Creación de los botones guardar, actualizar y consultar tabla ROOM-->
+        <tr>
+            <td colspan="1">
+                <tr><td><center><input type ="button" value = "GUARDAR" onclick="guardarRoom()"></center></td>
+                    <td><center><input type ="button" value = "ACTUALIZAR" onclick="actualizarRoom()"></center></td>
+                </tr>
+                <tr>
+                    <td><center><input type ="button" value = "CONSULTAR UNO" onclick="consultarOneRoom()"></center></td>
+                    <td><center><input type ="button" value = "CONSULTAR TODO" onclick="consultarRoom()"></center></td>
+                </tr>
+            </td>
+        </tr>
+        
+    </tbody>      
+    </table>
+    </fieldset>
+    
+    
+
+    <!--Formulario Cliente-->
+    <span style="color:cornflowerblue"><center><h2></h2></center></span>
+    <fieldset style="width: 15%">
+        <legend>Registro de Clientes</legend>
+    <table>
+    <tbody>
+        <!--Nombre de la celda e input para ingresar el ID-->
+        <tr><td><span style="color:blueviolet"><b>ID</b></span></td>
+            <td><input type="number" id="id"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+        <!--Nombre de la celda e input para ingresar NAME-->
+        <tr><td><span style="color:blueviolet"><b>NAME</b></span></td>
+            <td><input type="text" name="name"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+        <!--Nombre de la celda e input para ingresar el EMAIL-->
+        
+        <tr><td><span style="color:blueviolet"><b>EMAIL</b></span></td>
+            <td><input type="email" email="email"></td>
+            <div id = "resultado"></div>
+        </tr>
+        <!--Nombre de la celda e input para ingresar AGE-->
+        <tr><td><span style="color:blueviolet"><b>AGE</b></span></td>
+            <td><input type="number" age="age"></td>
+            <div id = "resultado"></div> 
+        </tr>
+        <tr>
+        <!--Creación de los botones guardar, actualizar y consultar de la tabla CLIENT-->
+            <td colspan="1">
+                <tr>
+                    <td><center><input type ="button" value = "GUARDAR" onclick="guardarCliente()"></center></td>
+                    <td><center><input type ="button" value = "ACTUALIZAR" onclick="actualizarCliente()"></center></td>
+                </tr>
+                <tr>
+                    <td><center><input type ="button" value = "CONSULTAR" onclick="consultarCliente()"></center></td>
+                    <td><center><input type ="button" value = "CONSULTAR UNO" onclick="consultarUnCliente()"></center></td>  
+                </tr>
+            </td>
+        </tr>
+    </tbody>      
+    </table>
+    </fieldset> 
+
+
+    <!--Registro Mensajes-->
+    <span style="color:cornflowerblue"><center><h2></h2></center></span>
+    <fieldset style="width: 15%">
+        <legend>Registro de Mensajes</legend>
+        <table>
+        <tbody>
+    <!--Nombre de la celda e input para ingresar el ID-->
+        <tr><td><span style="color:blueviolet"><b>ID</b></span></td>
+            <td><input type="number" id="id"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+    <!--Nombre de la celda e input para ingresar MESSAGE-->
+        <tr><td><span style="color:blueviolet"><b>MESSAGE</b></span></td>
+            <td><input type="text" name="name"></th></td>
+            <td><div id = "resultado"></div></td>
+        </tr>
+    <!--Creación de los botones guardar, actualizar y consultar tabla MESSAGE-->
+        <tr>
+            <td colspan="1">
+                <tr>
+                    <td><center><input type ="button" value = "GUARDAR" onclick="guardarMessage()"></center></td>
+                    <td><center><input type ="button" value = "ACTUALIZAR" onclick="actualizarMessage()"></center></td>                    
+                </tr>
+                <tr>
+                    <td><center><input type ="button" value = "CONSULTAR" onclick="consultarMessage()"></center></td>
+                    <td><center><input type ="button" value = "CONSULTAR UNO" onclick="consultarOneMenssage()"></center></td>                   
+                </tr>
+            </td>
+        </tr>
+    </tbody>      
+    </table>
+    </fieldset> 
+</body>
+</html>
+    
