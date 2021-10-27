@@ -178,7 +178,7 @@ function obtTablaCliente(items){
         myTable+="<td>" +items[i].name+"</td>";
         myTable+="<td>" +items[i].email+"</td>";
         myTable+="<td>" +items[i].age+"</td>";
-        myTable+="<td>";
+        myTable+="<td> <button onclick='borrarCliente("+items[i].id+")'>Borrar</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
@@ -298,7 +298,7 @@ function obtTablaMessage(items){
         myTable+="<tr>";
         myTable+="<td>" +items[i].id+"</td>";
         myTable+="<td>" +items[i].messagetext+"</td>";
-        myTable+="<td><button onclick='borrarRoom("+items[i].id+")'>Borrar</button>";
+        myTable+="<td><button onclick='borrarMessage("+items[i].id+")'>Borrar</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
@@ -320,7 +320,7 @@ function guardarMessage(){
             $("#resultado").empty();
             $("#id").val("");
             $("#messagetext").val("");
-            cconsultarMessage();
+            consultarMessage();
             alert("se ha guardado el dato")
         },
         error: function(xhr,status){
