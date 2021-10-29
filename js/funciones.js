@@ -122,7 +122,7 @@ function borrarRoom(idElemento){
 
 function consultarOneRoom(){
     $.ajax({
-        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/room/room"+id.val(),
+        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/room/room/:id",
         type:"GET",
         datatype:"JSON",
         success : function (respuesta){
@@ -245,7 +245,7 @@ function actualizarCliente(){
 
 function consultarUnCliente(){
     $.ajax({
-        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client"+id.val(),
+        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/:id",
         type:"GET",
         datatype:"JSON",
         success : function (respuesta){
@@ -275,7 +275,7 @@ function borrarCliente(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado1").empty();
-            traerInformacionMensaje();
+            consultarCliente();
             alert("Se ha Eliminado.")
         }
     });
@@ -292,42 +292,37 @@ function limpiarFormularioCliente(){
 /**
  * FUNCIONES TABLA MESSAGE
  */
-
- function consultarMessage(){
+function consultarMessage(){
     $.ajax({
         url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            obtTablaMessage(respuesta.items)
-        },
-        error: function(xhr,status){
-            alert('Ha ocurrido un problema ' +xhr.status);
-        },
-        complete: function(xhr,status){
-            alert('La peticion se ha relizado ' +xhr.status);
+            obtTablaMessage(respuesta.items);
         }
+
     });
 }
-
 function obtTablaMessage(items){
+
     let myTable="<table>";
     for(i=0;i<items.length;i++){
         myTable+="<tr>";
-        myTable+="<td>" +items[i].id+"</td>";
-        myTable+="<td>" +items[i].messagetext+"</td>";
-        myTable+="<td><button onclick='borrarMessage("+items[i].id+")'>Borrar</button>";
+        myTable+="<td>"+items[i].id+"</td>";
+        myTable+="<td>"+items[i].messagetext+"</td>";
+ 
+        myTable+="<td> <button onclick='borrarMessage("+items[i].id+")'>Borrar</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
     $("#resultado2").append(myTable);
-
 }
 function guardarMessage(){
     let myData={
         id:$("#id2").val(),
-        messagetext:$("#messagetext").val(),      
+        messagetext:$("#messagetext").val(),
+       
     };
     let dataToSend=JSON.stringify(myData);
     console.log(dataToSend);
@@ -339,19 +334,17 @@ function guardarMessage(){
         success:function(respuesta){
             $("#resultado2").empty();
             $("#id2").val("");
-            $("#messagetext").val("");    
+            $("#messagetext").val("");        
             consultarMessage();
             alert("se ha guardado el dato")
-        },
-        error: function(xhr,status){
-            alert('Ha ocurrido un problema ' +xhr.status);
+            limpiarFormularioMessage();
         }
     });
 }
-function actualizarMessage(){
+function editarInformacionMensaje(){
     let myData={
         id:$("#id2").val(),
-        name:$("#messagetext").val(),
+        messagetext:$("#messagetext").val(),
     };
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
@@ -364,17 +357,13 @@ function actualizarMessage(){
         success:function(respuesta){
             $("#resultado2").empty();
             $("#id2").val("");
-            $("#messagetext").val("");
+            $("#messagetext").val("");      
             consultarMessage();
             alert("se ha Actualizado")
             limpiarFormularioMessage();
-        },
-        error: function(xhr,status){
-            alert('Ha ocurrido un problema ' +xhr.status);
         }
     });
 }
-
 function borrarMessage(idElemento){
     let myData={
         id:idElemento
@@ -390,16 +379,12 @@ function borrarMessage(idElemento){
             $("#resultado2").empty();
             consultarMessage();
             alert("Se ha Eliminado.")
-            limpiarFormularioMessage();
-        },
-        error: function(xhr,status){
-            alert('Ha ocurrido un problema ' +xhr.status);
         }
     });
 }
 function consultarOneMenssage(){
     $.ajax({
-        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message"+id.val(),
+        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message/:id",
         type:"GET",
         datatype:"JSON",
         success : function (respuesta){
