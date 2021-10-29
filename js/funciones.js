@@ -327,9 +327,10 @@ function obtTablaMessage(items){
 function guardarMessage(){
     let myData={
         id:$("#id2").val(),
-        messagetext:$("#messagetext").val(),
+        messagetext:$("#messagetext").val(),      
     };
     let dataToSend=JSON.stringify(myData);
+    console.log(dataToSend);
     $.ajax({
         url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
         type:"POST",
@@ -338,7 +339,7 @@ function guardarMessage(){
         success:function(respuesta){
             $("#resultado2").empty();
             $("#id2").val("");
-            $("#messagetext").val("");
+            $("#messagetext").val("");    
             consultarMessage();
             alert("se ha guardado el dato")
         },
