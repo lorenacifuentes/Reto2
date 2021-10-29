@@ -292,19 +292,20 @@ function limpiarFormularioCliente(){
 /**
  * FUNCIONES TABLA MESSAGE
  */
-function consultarMessage(){
+ function traerInformacionMensaje(){
     $.ajax({
         url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
         type:"GET",
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            obtTablaMessage(respuesta.items);
+            pintarRespuesta1(respuesta.items);
         }
 
     });
 }
-function obtTablaMessage(items){
+
+function pintarRespuesta1(items){
 
     let myTable="<table>";
     for(i=0;i<items.length;i++){
@@ -312,13 +313,14 @@ function obtTablaMessage(items){
         myTable+="<td>"+items[i].id+"</td>";
         myTable+="<td>"+items[i].messagetext+"</td>";
  
-        myTable+="<td> <button onclick='borrarMessage("+items[i].id+")'>Borrar</button>";
+        myTable+="<td> <button onclick='borrarElementoMensaje("+items[i].id+")'>Borrar</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
     $("#resultado2").append(myTable);
+
 }
-function guardarMessage(){
+function guardarInformacionMensaje(){
     let myData={
         id:$("#id2").val(),
         messagetext:$("#messagetext").val(),
@@ -334,17 +336,21 @@ function guardarMessage(){
         success:function(respuesta){
             $("#resultado2").empty();
             $("#id2").val("");
-            $("#messagetext").val("");        
-            consultarMessage();
+            $("#messagetext").val("");
+         
+            traerInformacionMensaje();
             alert("se ha guardado el dato")
-            limpiarFormularioMessage();
         }
     });
 }
+
+
 function editarInformacionMensaje(){
     let myData={
         id:$("#id2").val(),
         messagetext:$("#messagetext").val(),
+   
+
     };
     console.log(myData);
     let dataToSend=JSON.stringify(myData);
@@ -357,14 +363,15 @@ function editarInformacionMensaje(){
         success:function(respuesta){
             $("#resultado2").empty();
             $("#id2").val("");
-            $("#messagetext").val("");      
-            consultarMessage();
+            $("#messagetext").val("");
+       
+            traerInformacionMensaje();
             alert("se ha Actualizado")
-            limpiarFormularioMessage();
         }
     });
 }
-function borrarMessage(idElemento){
+
+function borrarElementoMensaje(idElemento){
     let myData={
         id:idElemento
     };
@@ -377,30 +384,8 @@ function borrarMessage(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado2").empty();
-            consultarMessage();
+            traerInformacionMensaje();
             alert("Se ha Eliminado.")
         }
     });
-}
-function consultarOneMenssage(){
-    $.ajax({
-        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message/:id",
-        type:"GET",
-        datatype:"JSON",
-        success : function (respuesta){
-            $("#resultado2").empty();
-            $("#resultado2").append( json.items[0].nombre +" $"+json.items[0].valor);
-            console.log(respuesta);
-        },
-        error: function(xhr,status){
-            alert('Ha ocurrido un problema ' +xhr.status);
-        },
-        complete: function(xhr,status){
-            alert('La peticion se ha relizado ' +xhr.status);
-        }
-    });
-}
-function limpiarFormularioMessage(){
-    $("#id2").val("");
-    $("#messagetext").val("");
 }
