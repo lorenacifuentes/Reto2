@@ -182,12 +182,12 @@ function obtTablaCliente(items){
         myTable+="</tr>";
     }
     myTable+="</table>";
-    $("#resultado").append(myTable);
+    $("#resultado1").append(myTable);
 
 }
 function guardarCliente(){
     let myData={
-        id:$("#id").val(),
+        id:$("#id1").val(),
         name:$("#name").val(),
         email:$("#email").val(),
         age:$("#age").val(),
@@ -199,8 +199,8 @@ function guardarCliente(){
         data:myData,
         datatype:"JSON",
         success:function(respuesta){
-            $("#resultado").empty();
-            $("#id").val("");
+            $("#resultado1").empty();
+            $("#id1").val("");
             $("#name").val("");
             $("#email").val("");
             $("#age").val("");
@@ -214,7 +214,7 @@ function guardarCliente(){
 }
 function actualizarCliente(){
     let myData={
-        id:$("#id").val(),
+        id:$("#id1").val(),
         name:$("#name").val(),
         email:$("#email").val(),
         age:$("#age").val(),
@@ -228,8 +228,8 @@ function actualizarCliente(){
         contentType:"application/JSON",
         datatype:"JSON",
         success:function(respuesta){
-            $("#resultado").empty();
-            $("#id").val("");
+            $("#resultado1").empty();
+            $("#id1").val("");
             $("#name").val("");
             $("#email").val("");
             $("#age").val("");
@@ -249,8 +249,8 @@ function consultarUnCliente(){
         type:"GET",
         datatype:"JSON",
         success : function (respuesta){
-            $("#resultado").empty();
-            $("#resultado").append( json.items[0].nombre +" $"+json.items[0].valor);
+            $("#resultado1").empty();
+            $("#resultado1").append( json.items[0].nombre +" $"+json.items[0].valor);
             console.log(respuesta);
         },
         error: function(xhr,status){
@@ -262,8 +262,27 @@ function consultarUnCliente(){
     });
 }
 
+function borrarCliente(idElemento){
+    let myData={
+        id:idElemento
+    };
+    let dataToSend=JSON.stringify(myData);
+    $.ajax({
+        url:"https://g61fb640298abd1-oracle2021.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
+        type:"DELETE",
+        data:dataToSend,
+        contentType:"application/JSON",
+        datatype:"JSON",
+        success:function(respuesta){
+            $("#resultado1").empty();
+            traerInformacionMensaje();
+            alert("Se ha Eliminado.")
+        }
+    });
+}
+
 function limpiarFormularioCliente(){
-    $("#id").val("");
+    $("#id1").val("");
     $("#name").val("");
     $("#email").val("");
     $("#Age").val("");
@@ -302,12 +321,12 @@ function obtTablaMessage(items){
         myTable+="</tr>";
     }
     myTable+="</table>";
-    $("#resultado").append(myTable);
+    $("#resultado2").append(myTable);
 
 }
 function guardarMessage(){
     let myData={
-        id:$("#id").val(),
+        id:$("#id2").val(),
         messagetext:$("#messagetext").val(),
     };
     let dataToSend=JSON.stringify(myData);
@@ -317,8 +336,8 @@ function guardarMessage(){
         data:myData,
         datatype:"JSON",
         success:function(respuesta){
-            $("#resultado").empty();
-            $("#id").val("");
+            $("#resultado2").empty();
+            $("#id2").val("");
             $("#messagetext").val("");
             consultarMessage();
             alert("se ha guardado el dato")
@@ -330,7 +349,7 @@ function guardarMessage(){
 }
 function actualizarMessage(){
     let myData={
-        id:$("#id").val(),
+        id:$("#id2").val(),
         name:$("#messagetext").val(),
     };
     console.log(myData);
@@ -342,12 +361,12 @@ function actualizarMessage(){
         contentType:"application/JSON",
         datatype:"JSON",
         success:function(respuesta){
-            $("#resultado").empty();
-            $("#id").val("");
+            $("#resultado2").empty();
+            $("#id2").val("");
             $("#messagetext").val("");
             consultarMessage();
             alert("se ha Actualizado")
-            limpiarFormularioCliente();
+            limpiarFormularioMessage();
         },
         error: function(xhr,status){
             alert('Ha ocurrido un problema ' +xhr.status);
@@ -367,10 +386,10 @@ function borrarMessage(idElemento){
         contentType:"application/JSON",
         datatype:"JSON",
         success:function(respuesta){
-            $("#resultado").empty();
+            $("#resultado2").empty();
             consultarMessage();
             alert("Se ha Eliminado.")
-            limpiarFormularioCliente();
+            limpiarFormularioMessage();
         },
         error: function(xhr,status){
             alert('Ha ocurrido un problema ' +xhr.status);
@@ -383,8 +402,8 @@ function consultarOneMenssage(){
         type:"GET",
         datatype:"JSON",
         success : function (respuesta){
-            $("#resultado").empty();
-            $("#resultado").append( json.items[0].nombre +" $"+json.items[0].valor);
+            $("#resultado2").empty();
+            $("#resultado2").append( json.items[0].nombre +" $"+json.items[0].valor);
             console.log(respuesta);
         },
         error: function(xhr,status){
@@ -395,7 +414,7 @@ function consultarOneMenssage(){
         }
     });
 }
-function limpiarFormularioCliente(){
-    $("#id").val("");
+function limpiarFormularioMessage(){
+    $("#id2").val("");
     $("#messagetext").val("");
 }
