@@ -56,7 +56,7 @@ function guardarRoom(){
             $("#stars").val("");
             $("#category_id").val("");
             $("#description").val("");
-            consultarRoom();
+            //consultarRoom();
             alert("se ha guardado el dato correctamente")
         },
         error: function(xhr,status){
@@ -87,7 +87,7 @@ function actualizarRoom(){
             $("#stars").val("");
             $("#category_id").val("");
             $("#description").val("");
-            consultarRoom();
+            //consultarRoom();
             alert("se ha Actualizado")
             limpiarFormularioRoom();
         },
@@ -109,7 +109,7 @@ function borrarRoom(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado").empty();
-            consultarRoom();
+            //consultarRoom();
             alert("Se ha Eliminado.")
             limpiarFormularioRoom();
         },
@@ -204,7 +204,7 @@ function guardarCliente(){
             $("#name").val("");
             $("#email").val("");
             $("#age").val("");
-            consultarCliente();
+            //consultarCliente();
             alert("se ha guardado el dato")
         },
         error: function(xhr,status){
@@ -233,7 +233,7 @@ function actualizarCliente(){
             $("#name").val("");
             $("#email").val("");
             $("#age").val("");
-            consultarCliente();
+           // consultarCliente();
             alert("se ha Actualizado")
             limpiarFormularioCliente();
         },
@@ -275,7 +275,7 @@ function borrarCliente(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado1").empty();
-            consultarCliente();
+            //consultarCliente();
             alert("Se ha Eliminado.")
         }
     });
@@ -338,7 +338,7 @@ function guardarInformacionMensaje(){
             $("#id2").val("");
             $("#messagetext").val("");
          
-            traerInformacionMensaje();
+         //   traerInformacionMensaje();
             alert("se ha guardado el dato")
         }
     });
@@ -365,7 +365,7 @@ function editarInformacionMensaje(){
             $("#id2").val("");
             $("#messagetext").val("");
        
-            traerInformacionMensaje();
+           // traerInformacionMensaje();
             alert("se ha Actualizado")
         }
     });
@@ -384,7 +384,7 @@ function borrarElementoMensaje(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado2").empty();
-            traerInformacionMensaje();
+           // traerInformacionMensaje();
             alert("Se ha Eliminado.")
         }
     });
