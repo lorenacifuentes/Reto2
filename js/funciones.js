@@ -299,13 +299,13 @@ function limpiarFormularioCliente(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuesta1(respuesta.items);
+            traerInformacionMensaje(respuesta.items);
         }
 
     });
 }
 
-function pintarRespuesta1(items){
+function traerInformacionMensaje(items){
 
     let myTable="<table>";
     for(i=0;i<items.length;i++){
