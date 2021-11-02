@@ -299,13 +299,13 @@ function limpiarFormularioCliente(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            traerInformacionMensaje(respuesta.items);
+            mostrarTablaMensaje(respuesta.items);
         }
 
     });
 }
 
-function traerInformacionMensaje(items){
+function mostrarTablaMensaje(items){
 
     let myTable="<table>";
     for(i=0;i<items.length;i++){
@@ -338,7 +338,6 @@ function guardarInformacionMensaje(){
             $("#id2").val("");
             $("#messagetext").val("");
          
-         //   traerInformacionMensaje();
             alert("se ha guardado el dato")
         }
     });
